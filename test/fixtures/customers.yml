@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  borrower: MyString
+  address_b: MyString
+  city_b: MyString
+  state_b: MyString
+  zipcode_b: MyString
+  businessname: MyString
+  businesstype: MyString
+  ownership: MyString
+  loanamount: MyString
+  ltv: MyString
+  transactiontype: MyString
+  address_g: MyString
+  city_g: MyString
+  state_g: MyString
+  zipcode_g: MyString
+
+two:
+  borrower: MyString
+  address_b: MyString
+  city_b: MyString
+  state_b: MyString
+  zipcode_b: MyString
+  businessname: MyString
+  businesstype: MyString
+  ownership: MyString
+  loanamount: MyString
+  ltv: MyString
+  transactiontype: MyString
+  address_g: MyString
+  city_g: MyString
+  state_g: MyString
+  zipcode_g: MyString
