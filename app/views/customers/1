@@ -79,39 +79,27 @@
   </div>
   </td>
  </tr>
- <tr>
-  <td>
+</table>
   <div class="field">
     <%= f.label :transactiontype, 'Transaction Type:' %><br />
-    <%= f.text_field :transactiontype, size: 60 %>
+    <%= f.text_field :transactiontype %>
   </div>
-  </td>
-  <td>
   <div class="field">
     <%= f.label :address_g, 'Guarantor Address:' %><br />
-    <%= f.text_field :address_g, size: 60  %>
+    <%= f.text_field :address_g %>
   </div>
-  </td>
-  <td>
   <div class="field">
     <%= f.label :city_g, 'City:' %><br />
     <%= f.text_field :city_g %>
   </div>
-  </td> 
-  <td>
   <div class="field">
     <%= f.label :state_g, 'State:' %><br />
     <%= f.text_field :state_g %>
   </div>
-  </td>
-  <td>
   <div class="field">
-    <%= f.label :zipcode_g, 'Zip Code:' %><br />
+    <%= f.label :zipcode_g, 'ZipCode:' %><br />
     <%= f.text_field :zipcode_g %>
   </div>
-  </td>
- </tr>
-</table>
   <div class="actions">
     <%= f.submit %>
   </div>
