@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120731045541) do
+ActiveRecord::Schema.define(:version => 20120812010206) do
+
+  create_table "appraisals", :force => true do |t|
+    t.date     "ordered_date"
+    t.date     "received_date"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "customer_id"
+  end
 
   create_table "customers", :force => true do |t|
     t.string   "borrower"
@@ -31,6 +39,33 @@ ActiveRecord::Schema.define(:version => 20120731045541) do
     t.string   "zipcode_g"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "environmentals", :force => true do |t|
+    t.integer  "customer_id"
+    t.date     "ordered_date"
+    t.date     "received_date"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "loandetails", :force => true do |t|
+    t.integer  "customer_id"
+    t.date     "deposit_date"
+    t.date     "docs_ordered_date"
+    t.date     "funded_date"
+    t.string   "broker"
+    t.string   "commission"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "lois", :force => true do |t|
+    t.integer  "customer_id"
+    t.string   "issued_date"
+    t.date     "accepted_date"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "users", :force => true do |t|

@@ -1,24 +1,20 @@
-<h1>Listing customers</h1>
+<h1>Listing SBA customers</h1>
 
 <table>
 
 <% @customers.each do |customer| %>
   <tr>
     <td><%= customer.borrower %></td>
-    <td><%= customer.address_b %></td>
-    <td><%= customer.city_b %></td>
-    <td><%= customer.state_b %></td>
-    <td><%= customer.zipcode_b %></td>
+    
     <td><%= customer.businessname %></td>
     <td><%= customer.businesstype %></td>
     <td><%= customer.ownership %></td>
     <td><%= customer.loanamount %></td>
     <td><%= customer.ltv %></td>
     <td><%= customer.transactiontype %></td>
-    <td><%= customer.address_g %></td>
-    <td><%= customer.city_g %></td>
-    <td><%= customer.state_g %></td>
-    <td><%= customer.zipcode_g %></td>
+    
+    <td><%= customer.loi.issued_date %>
+	<td><%= customer.loi.accepted_date %>
     <td><%= link_to 'Show', customer %></td>
     <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
     <td><%= link_to 'Destroy', customer, confirm: 'Are you sure?', method: :delete %></td>

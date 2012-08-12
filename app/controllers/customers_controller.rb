@@ -26,6 +26,10 @@ before_filter :authenticate_user!
   # GET /customers/new.json
   def new
     @customer = Customer.new
+    @customer.build_loi
+    @customer.build_appraisal
+    @customer.build_environmental
+    @customer.build_loandetail
 
     respond_to do |format|
       format.html # new.html.erb

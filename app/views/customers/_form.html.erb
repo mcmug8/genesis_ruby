@@ -62,7 +62,7 @@
   </td>
   <td>
   <div class="field">
-    <%= f.label :ownership, 'Owner Ship%:' %><br />
+    <%= f.label :ownership, 'Ownership%:' %><br />
     <%= f.text_field :ownership %>
   </div>
   </td>
@@ -112,9 +112,63 @@
   </td>
  </tr>
 </table>
-  <div class="actions">
+ <h4>Loan Details</h4>
+<table cellspacing="20">
+  <tr>
+	<td>
+  	<%= f.fields_for :loi do |ff| %>   
+    	<div> LOI Issued Date:</div> 
+    	<div><%= ff.text_field :issued_date %></div>
+	 	<div> LOI Accepted Date: </div>
+	 	<div> <%= ff.text_field :accepted_date %></div>  
+  	<% end %> 
+    </td>
+    <td>
+  	<%= f.fields_for :appraisal do |ff| %>
+    	<div>Appraisal Ordered Date:</div>
+    	<div><%= ff.text_field :ordered_date %></div>
+    	<div>Appraisal received Date:</div>
+    	<div><%= ff.text_field :received_date %></div>
+  	<% end %>
+   </td>
+   <td>
+  	<%= f.fields_for :environmental do |ff| %>
+    	<div>Env Ordered Date:</div>
+    	<div><%= ff.text_field :ordered_date %>
+		<div>Env Received Date: </div>
+		<div><%= ff.text_field :received_date %>
+  	<% end %>
+    </td>
+  
+  	<td>
+  	<%= f.fields_for :loandetail do |ff| %>
+  		<div>Deposit Made Date:</div>
+    	<div><%= ff.text_field :deposit_date %>
+		<div>Docs Ordered Date: </div>
+		<div><%= ff.text_field :docs_ordered_date %>
+	</td>
+	<td>
+		<div>Funded Date: </div>
+		<div><%= ff.text_field :funded_date %>
+		<div>Name of Broker: </div>
+		<div><%= ff.text_field :broker %>
+	</td>
+   </tr>
+   <tr>
+	<td>
+	<div>Commission: </div>
+	<div><%= ff.text_field :commission %>
+	</td>	
+  <% end %>
+ </tr>
+</table>
+
+ <br />
+<br />
+<div class="actions">
     <%= f.submit %>
   </div>
  </fieldset>
-<% end %>
+ <% end %>
+
 </div>

@@ -1,0 +1,2 @@
+class LoisController < ApplicationController
+end

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  customer_id: 1
+  deposit_date: 2012-08-11
+  docs_ordered_date: 2012-08-11
+  funded_date: 2012-08-11
+  broker: MyString
+  commission: MyString
+
+two:
+  customer_id: 1
+  deposit_date: 2012-08-11
+  docs_ordered_date: 2012-08-11
+  funded_date: 2012-08-11
+  broker: MyString
+  commission: MyString
