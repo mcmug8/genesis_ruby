@@ -1,6 +1,17 @@
 <h1>Listing SBA customers</h1>
 
-<table>
+<table border="1">
+  <tr>
+   <th>Borrower Name</th>
+   <th>Business Name</th>
+   <th>Business Type</th>
+   <th>Ownership %</th>
+   <th>Loan Amount</th>
+   <th>LTV</th>
+   <th>Transaction Type</th>
+   <th>LOI Issued Date</th>
+   <th>LOI Accepted Date</th>
+  </tr>
 
 <% @customers.each do |customer| %>
   <tr>
