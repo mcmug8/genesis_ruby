@@ -26,6 +26,10 @@ before_filter :authenticate_user!
   # GET /customers/new.json
   def new
     @customer = Customer.new
+    3.times do
+      @customer.subborrowers.build
+    end
+    
     @customer.build_loi
     @customer.build_appraisal
     @customer.build_environmental
