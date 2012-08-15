@@ -4,5 +4,6 @@ class Customer < ActiveRecord::Base
   has_one :appraisal
   has_one :environmental
   has_one :loandetail
+  has_many :subborrwer
   accepts_nested_attributes_for :loi, :appraisal, :environmental, :loandetail
 end
