@@ -50,7 +50,7 @@
 <tr>
   <td>
   <div class="field">
-    <%= f.label :businessname, 'Bussiness Name:' %><br />
+    <%= f.label :businessname, 'Business Name:' %><br />
     <%= f.text_field :businessname, size: 60  %>
   </div>
   </td>
@@ -112,6 +112,37 @@
   </td>
  </tr>
 </table>
+
+<table>
+ 
+ 	<%= f.fields_for :subborrowers do |ff| %>
+    <tr>
+    <td>
+		<div> Co Borrower Name: </div>
+		<div><%= ff.text_field :name, size: 60 %>
+	</td>
+	<td>
+		<div> Address: </div>
+		<div><%= ff.text_field :address, size: 60 %>
+	</td>
+	<td>
+		<div> City: </div>
+		<div><%= ff.text_field :city %>
+	</td>
+	<td>
+		<div> State: </div>
+		<div><%= ff.text_field :state %>
+	</td>
+	<td>
+		<div> Zip code: </div>
+		<div><%= ff.text_field :zip %>
+	</td>
+	</tr>
+ 	<% end %>
+ 
+</table>
+
+
  <h4>Loan Details</h4>
 <table cellspacing="20">
   <tr>
