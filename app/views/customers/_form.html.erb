@@ -143,6 +143,7 @@
 </table>
 
 
+
  <h4>Loan Details</h4>
 <table cellspacing="20">
   <tr>
@@ -193,6 +194,21 @@
   <% end %>
  </tr>
 </table>
+
+<%= f.fields_for :assets do |ff| %>
+<%= ff.select :docname, [['Tax Return (last yr)','tax return last yr'],['Tax Return (prev yr)','tax return prev yr'],
+    ['Tax Return (prev 2 yrs)','tax return prev 2 yrs'],['Guarantor Tax Return (last yr)','guarantor tax return (last yr)'],
+	['Guarantor Tax Return (prev yr)','guarantor tax return (prev yr)'],['Guarantor Tax Return (Prev 2 yrs)','guarantor tax return (prev 2 yrs)'],
+	['Financial Statement within 90 Days','financial statement within 90 days'],['Affiliated Tax Return (last yr)','affiliated tax return (last yr)'],
+	['Affiliated Financial Statement 90 days','affiliated financial statement 90 days'],['Affiliated Tax Return (prev yr)','affiliated tax return (prev yr)'],
+	['Affiliated Tax Return (2 yrs)','affiliated tax return (2 yrs)'],['Projection', 'projection'],['Resume','resume'],['SBA 912 - Statement','sba 912 - statement'],
+	['SBA 413 - Personal Financial Statement','sba 413 - personal financial statement'],['T4506 - IRS Transcript','T4506 - IRS transcript'],
+	['INS Form G845','ins form g845'],['Purchase & Sales Agreement','purchase & sales agreement'],['Lease Agreement','lease agreement'],
+	['Business Fact Sheet','business fact sheet'],['Business Debt Schedule','business debt schedule'],['Corporate Document','corporate document'],
+	['Equipment List','equipment list'],['Franchise/Gas Supplier Agreement','franchise/gas supplier agreement'],['Personal Credit Report','personal credit report'],
+	['Monthly ADR/Monthly Gallon & Inside Report','monthly adr/monthly gallon & inside report'],['Bank Statement','bank statement'],['Other','other']]%>
+<%= ff.file_field :asset %>
+<% end %>
 
  <br />
 <br />

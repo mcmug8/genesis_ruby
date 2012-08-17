@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120815055532) do
+ActiveRecord::Schema.define(:version => 20120817041455) do
 
   create_table "appraisals", :force => true do |t|
     t.date     "ordered_date"
@@ -19,6 +19,17 @@ ActiveRecord::Schema.define(:version => 20120815055532) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "customer_id"
+  end
+
+  create_table "assets", :force => true do |t|
+    t.string   "asset_file_name"
+    t.integer  "asset_file_size"
+    t.string   "asset_content_type"
+    t.datetime "asset_updated_at"
+    t.integer  "customer_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "docname"
   end
 
   create_table "customers", :force => true do |t|

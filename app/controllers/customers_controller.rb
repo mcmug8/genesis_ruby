@@ -30,6 +30,10 @@ before_filter :authenticate_user!
       @customer.subborrowers.build
     end
     
+    28.times do
+      @customer.assets.build
+    end
+    
     @customer.build_loi
     @customer.build_appraisal
     @customer.build_environmental
