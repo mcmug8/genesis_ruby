@@ -1,5 +1,5 @@
 <div class="depot_form">
-<%= form_for(@customer) do |f| %>
+<%= form_for(@customer, :html => { :multipart => true }) do |f| %>
   <% if @customer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
@@ -195,20 +195,45 @@
  </tr>
 </table>
 
+<h4>Uploaded Documents (<%= @number_of_existing_uploads %>)</h4>
+
+
+<% type_array = [['Tax Return (last yr)','tax return last yr'],['Tax Return (prev yr)','tax return prev yr'],
+	    ['Tax Return (prev 2 yrs)','tax return prev 2 yrs'],['Guarantor Tax Return (last yr)','guarantor tax return (last yr)'],
+		['Guarantor Tax Return (prev yr)','guarantor tax return (prev yr)'],['Guarantor Tax Return (Prev 2 yrs)','guarantor tax return (prev 2 yrs)'],
+		['Financial Statement within 90 Days','financial statement within 90 days'],['Affiliated Tax Return (last yr)','affiliated tax return (last yr)'],
+		['Affiliated Financial Statement 90 days','affiliated financial statement 90 days'],['Affiliated Tax Return (prev yr)','affiliated tax return (prev yr)'],
+		['Affiliated Tax Return (2 yrs)','affiliated tax return (2 yrs)'],['Projection', 'projection'],['Resume','resume'],['SBA 912 - Statement','sba 912 - statement'],
+		['SBA 413 - Personal Financial Statement','sba 413 - personal financial statement'],['T4506 - IRS Transcript','T4506 - IRS transcript'],
+		['INS Form G845','ins form g845'],['Purchase & Sales Agreement','purchase & sales agreement'],['Lease Agreement','lease agreement'],
+		['Business Fact Sheet','business fact sheet'],['Business Debt Schedule','business debt schedule'],['Corporate Document','corporate document'],
+		['Equipment List','equipment list'],['Franchise/Gas Supplier Agreement','franchise/gas supplier agreement'],['Personal Credit Report','personal credit report'],
+		['Monthly ADR/Monthly Gallon & Inside Report','monthly adr/monthly gallon & inside report'],['Bank Statement','bank statement'],['Other','other']] %>
+
+<!-- Display already uploaded files -->
 <%= f.fields_for :assets do |ff| %>
-<%= ff.select :docname, [['Tax Return (last yr)','tax return last yr'],['Tax Return (prev yr)','tax return prev yr'],
-    ['Tax Return (prev 2 yrs)','tax return prev 2 yrs'],['Guarantor Tax Return (last yr)','guarantor tax return (last yr)'],
-	['Guarantor Tax Return (prev yr)','guarantor tax return (prev yr)'],['Guarantor Tax Return (Prev 2 yrs)','guarantor tax return (prev 2 yrs)'],
-	['Financial Statement within 90 Days','financial statement within 90 days'],['Affiliated Tax Return (last yr)','affiliated tax return (last yr)'],
-	['Affiliated Financial Statement 90 days','affiliated financial statement 90 days'],['Affiliated Tax Return (prev yr)','affiliated tax return (prev yr)'],
-	['Affiliated Tax Return (2 yrs)','affiliated tax return (2 yrs)'],['Projection', 'projection'],['Resume','resume'],['SBA 912 - Statement','sba 912 - statement'],
-	['SBA 413 - Personal Financial Statement','sba 413 - personal financial statement'],['T4506 - IRS Transcript','T4506 - IRS transcript'],
-	['INS Form G845','ins form g845'],['Purchase & Sales Agreement','purchase & sales agreement'],['Lease Agreement','lease agreement'],
-	['Business Fact Sheet','business fact sheet'],['Business Debt Schedule','business debt schedule'],['Corporate Document','corporate document'],
-	['Equipment List','equipment list'],['Franchise/Gas Supplier Agreement','franchise/gas supplier agreement'],['Personal Credit Report','personal credit report'],
-	['Monthly ADR/Monthly Gallon & Inside Report','monthly adr/monthly gallon & inside report'],['Bank Statement','bank statement'],['Other','other']]%>
-<%= ff.file_field :asset %>
+	<% file_name = ff.object.asset_file_name %>
+	<% if !file_name.nil? %>
+		<%= ff.select :docname, type_array %>   
+		<%= file_name %>   
+		<%= link_to "Delete File", asset_destroy_customers_path(:asset_id => ff.object.id) %>
+		<%= link_to "View File", ff.object.asset.url %>
+		<br />
+	<% end %>
 <% end %>
+
+<h4>Upload New Documents</h4>
+<!-- Display already uploaded files -->
+<%= f.fields_for :assets do |ff| %>
+	<% file_name = ff.object.asset_file_name %>
+	<% if file_name.nil? %>
+		<%= ff.select :docname, type_array %>    
+		<%= ff.file_field :asset %>
+	<br />
+	<% end %>
+<% end %>
+
+
 
  <br />
 <br />

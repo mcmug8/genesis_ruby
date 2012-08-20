@@ -1,10 +1,15 @@
 Genesis::Application.routes.draw do
-  resources :customers
-
+  resources :customers do
+    collection do
+       get ':id/destroy_asset', :action => 'destroy_asset', :as => 'asset_destroy'
+     end
+   end
+    
   devise_for :users  do
      get '/users/sign_out' => 'devise/sessions#destroy'
   end
-
+  
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
   # Sample of regular route:

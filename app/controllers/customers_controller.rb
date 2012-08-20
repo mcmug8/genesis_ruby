@@ -30,7 +30,7 @@ before_filter :authenticate_user!
       @customer.subborrowers.build
     end
     
-    28.times do
+    30.times do
       @customer.assets.build
     end
     
@@ -48,6 +48,19 @@ before_filter :authenticate_user!
   # GET /customers/1/edit
   def edit
     @customer = Customer.find(params[:id])
+    
+    @number_of_existing_uploads = get_number_of_existing_uploads
+    @customer.assets.build
+  end
+  
+  def get_number_of_existing_uploads
+    number_of_existing_uploads = 0
+    
+    @customer.assets.each do |asset|
+      number_of_existing_uploads += 1 unless asset.asset_file_name.nil?
+    end  
+    
+    return number_of_existing_uploads
   end
 
   # POST /customers
@@ -93,4 +106,14 @@ before_filter :authenticate_user!
       format.json { head :no_content }
     end
   end
+  
+  def destroy_asset
+    @customer = Customer.find(params[:id])
+    Asset.delete(params[:asset_id])
+    
+    respond_to do |format|
+      format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }  
+    end
+  end
+  
 end
