@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<h2>Loan Details</h2>
 <p>
   <b>Borrower:</b>
   <%= @customer.borrower %>
@@ -75,6 +75,74 @@
   <%= @customer.zipcode_g %>
 </p>
 
+<p>
+  <b>LOI Issued Date:</b>
+  <%= @customer.loi.issued_date %>
+</p>
+
+<p>
+  <b>LOI Accepted Date:</b>
+  <%= @customer.loi.accepted_date %>
+</p>
+
+<p>
+  <b>Appraisal Ordered Date:</b>
+  <%= @customer.appraisal.ordered_date %>
+</p>
+
+<p>
+  <b>Appraisal Received Date:</b>
+  <%= @customer.appraisal.received_date %>
+</p>
+
+<p>
+  <b>Environmental Ordered Date:</b>
+  <%= @customer.environmental.ordered_date %>
+</p>
+
+<p>
+  <b>Environmental Received Date:</b>
+  <%= @customer.environmental.received_date %>
+</p>
+
+<p>
+  <b>Deposit Made Date:</b>
+  <%= @customer.loandetail.deposit_date %>
+</p>
+
+<p>
+  <b>Docs Ordered Date:</b>
+  <%= @customer.loandetail.docs_ordered_date %>
+</p>
+
+<p>
+  <b>Funded Date:</b>
+  <%= @customer.loandetail.funded_date %>
+</p>
+
+<p>
+  <b>Name of Broker:</b>
+  <%= @customer.loandetail.broker %>
+</p>
+
+<p>
+  <b>Commission:</b>
+  <%= @customer.loandetail.commission %>
+</p>
+
+<h4>Uploaded Documents:</h4>
+<table>
+<% @customer.assets.each do |asset|%>
+   <tr>
+	<% file_name = asset.asset_file_name %>
+	<% if !file_name.nil?%>
+		<td>=> <%= file_name %></td>
+		<td></td>
+		<td><%= link_to "View File", asset.asset.url %></td>
+	<% end %> 
+	</tr>		
+<% end %>
+</table>
 
 
 <%= link_to 'Edit', edit_customer_path(@customer) %> |

@@ -196,8 +196,6 @@
 </table>
 
 <h4>Uploaded Documents (<%= @number_of_existing_uploads %>)</h4>
-
-
 <% type_array = [['Tax Return (last yr)','tax return last yr'],['Tax Return (prev yr)','tax return prev yr'],
 	    ['Tax Return (prev 2 yrs)','tax return prev 2 yrs'],['Guarantor Tax Return (last yr)','guarantor tax return (last yr)'],
 		['Guarantor Tax Return (prev yr)','guarantor tax return (prev yr)'],['Guarantor Tax Return (Prev 2 yrs)','guarantor tax return (prev 2 yrs)'],
@@ -209,19 +207,21 @@
 		['Business Fact Sheet','business fact sheet'],['Business Debt Schedule','business debt schedule'],['Corporate Document','corporate document'],
 		['Equipment List','equipment list'],['Franchise/Gas Supplier Agreement','franchise/gas supplier agreement'],['Personal Credit Report','personal credit report'],
 		['Monthly ADR/Monthly Gallon & Inside Report','monthly adr/monthly gallon & inside report'],['Bank Statement','bank statement'],['Other','other']] %>
-
 <!-- Display already uploaded files -->
+<table>
 <%= f.fields_for :assets do |ff| %>
 	<% file_name = ff.object.asset_file_name %>
+	<tr>
 	<% if !file_name.nil? %>
-		<%= ff.select :docname, type_array %>   
-		<%= file_name %>   
-		<%= link_to "Delete File", asset_destroy_customers_path(:asset_id => ff.object.id) %>
-		<%= link_to "View File", ff.object.asset.url %>
-		<br />
+		<td><%= ff.select :docname, type_array %></td>   
+		<td><%= file_name %></td>   <td></td>
+		<td><%= link_to "View File", ff.object.asset.url %> | </td>
+		<td><%= link_to "Delete File", asset_destroy_customers_path(:asset_id => ff.object.id) %></td>
+	
 	<% end %>
+	</tr>
 <% end %>
-
+</table>
 <h4>Upload New Documents</h4>
 <!-- Display already uploaded files -->
 <%= f.fields_for :assets do |ff| %>
