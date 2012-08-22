@@ -11,6 +11,7 @@
    <th>Transaction Type</th>
    <th>LOI Issued Date</th>
    <th>LOI Accepted Date</th>
+   <th>Action</th>
   </tr>
 
 <% @customers.each do |customer| %>
@@ -26,9 +27,9 @@
     
     <td><%= customer.loi.issued_date %>
 	<td><%= customer.loi.accepted_date %>
-    <td><%= link_to 'Show', customer %></td>
-    <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-    <td><%= link_to 'Destroy', customer, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', customer %> | 
+    <%= link_to 'Edit', edit_customer_path(customer) %> | 
+    <%= link_to 'Destroy', customer, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
